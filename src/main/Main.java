@@ -45,12 +45,12 @@ public class Main extends Application {
 
         Button restartButton = gameScreen.getRetyButton();
         restartButton.setOnAction(e -> {
-            //add alert box.
+            QuestionBox questionBox = new QuestionBox(0);
             goToGameScreen();
         });
         Button goToStartScreenButton = gameScreen.getGoToStartScreenButton();
         goToStartScreenButton.setOnAction(e -> {
-            //add alert box.
+            QuestionBox questionBox = new QuestionBox(1);
             initGame();
         });
 
