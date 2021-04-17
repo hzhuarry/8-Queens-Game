@@ -11,26 +11,18 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class QuestionBox {
-    private Button yesButton;
-    private Button noButton;
-    private Scene scene;
     private Stage window;
-    private Label label;
     private static final int width = 350;
     private static final int height = 120;
-    private int foo = -1;
-    private HBox hBox;
-    private VBox vBox;
     private boolean ret = false;
 
-    public boolean display(int foo2) {
-        foo = foo2;
+    public boolean display(int foo) {
         window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("ALERT!");
 
         Font font = new Font("Times New Roman", 18);
-        label = new Label();
+        Label label = new Label();
         if (foo == 0) {
             label.setText("Are you sure you want to restart the game?");
         } else {
@@ -39,8 +31,8 @@ public class QuestionBox {
         label.setFont(font);
         label.setAlignment(Pos.CENTER);
 
-        yesButton = new Button("YES");
-        noButton = new Button("NO");
+        Button yesButton = new Button("YES");
+        Button noButton = new Button("NO");
         yesButton.setOnAction(e -> {
             ret = true;
             window.close();
@@ -49,14 +41,14 @@ public class QuestionBox {
             window.close();
         });
 
-        hBox = new HBox(yesButton, noButton);
+        HBox hBox = new HBox(yesButton, noButton);
         hBox.setAlignment(Pos.CENTER);
         hBox.setSpacing(20);
-        vBox = new VBox(label, hBox);
+        VBox vBox = new VBox(label, hBox);
         vBox.setAlignment(Pos.CENTER);
         vBox.setSpacing(20);
 
-        scene = new Scene(vBox, width, height);
+        Scene scene = new Scene(vBox, width, height);
         window.setScene(scene);
         window.showAndWait();
 
