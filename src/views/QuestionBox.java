@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
@@ -15,9 +16,10 @@ public class QuestionBox {
     private Scene scene;
     private Stage window;
     private Label label;
-    private static final int width = 250;
-    private static final int height = 100;
+    private static final int width = 350;
+    private static final int height = 120;
     private int foo = -1;
+    private HBox hBox;
     private VBox vBox;
     private boolean ret = false;
 
@@ -47,7 +49,10 @@ public class QuestionBox {
             window.close();
         });
 
-        vBox = new VBox(label, yesButton, noButton);
+        hBox = new HBox(yesButton, noButton);
+        hBox.setAlignment(Pos.CENTER);
+        hBox.setSpacing(20);
+        vBox = new VBox(label, hBox);
         vBox.setAlignment(Pos.CENTER);
         vBox.setSpacing(20);
 
