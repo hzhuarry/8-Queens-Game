@@ -19,8 +19,9 @@ public class QuestionBox {
     private static final int height = 100;
     private int foo = -1;
     private VBox vBox;
+    private boolean ret = false;
 
-    public QuestionBox(int foo2) {
+    public boolean display(int foo2) {
         foo = foo2;
         window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
@@ -38,7 +39,13 @@ public class QuestionBox {
 
         yesButton = new Button("YES");
         noButton = new Button("NO");
-//        noButton.setOnAction(e->window.close());
+        yesButton.setOnAction(e -> {
+            ret = true;
+            window.close();
+        });
+        noButton.setOnAction(e -> {
+            window.close();
+        });
 
         vBox = new VBox(label, yesButton, noButton);
         vBox.setAlignment(Pos.CENTER);
@@ -47,5 +54,7 @@ public class QuestionBox {
         scene = new Scene(vBox, width, height);
         window.setScene(scene);
         window.showAndWait();
+
+        return  ret;
     }
 }

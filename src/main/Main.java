@@ -45,13 +45,17 @@ public class Main extends Application {
 
         Button restartButton = gameScreen.getRetyButton();
         restartButton.setOnAction(e -> {
-            QuestionBox questionBox = new QuestionBox(0);
-            goToGameScreen();
+            QuestionBox questionBox = new QuestionBox();
+            if (questionBox.display(0)) {
+                goToGameScreen();
+            }
         });
         Button goToStartScreenButton = gameScreen.getGoToStartScreenButton();
         goToStartScreenButton.setOnAction(e -> {
-            QuestionBox questionBox = new QuestionBox(1);
-            initGame();
+            QuestionBox questionBox = new QuestionBox();
+            if (questionBox.display(1)) {
+                initGame();
+            }
         });
 
         //play the game
